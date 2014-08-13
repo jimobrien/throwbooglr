@@ -6,11 +6,11 @@ var http = require('http-request');
 
 module.exports = function(pageUrl, callback) {
   http.get({
-    url: pageUrl,
+    url: 'http://' + pageUrl,
     progress: function (current, total) {
       console.log('downloaded %d bytes from %d', current, total);
     }
-  }, '../archives/sites', function (err, res) {
+  }, '../archives/sites/'+pageUrl, function (err, res) {
     if (err) {
       console.error(err);
       return;
