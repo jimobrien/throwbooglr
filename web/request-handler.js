@@ -15,9 +15,11 @@ exports.handleRequest = function (req, res) {
 
   if(method === 'GET') {
     res.writeHead(200, http.headers);
-    http.serveAssets(res, archive.paths.siteAssets + '/index.html', "hello world");
+    http.serveAssets(res, archive.paths.siteAssets + '/index.html', "working");
   } else if (method === 'POST') {
     // call http and server loader
+    res.writeHead(200, http.headers);
+    http.serveAssets(res, archive.paths.siteAssets + '/loading.html', "working");
     // call archive and pull the file
   } else if (method === 'OPTIONS') {
     res.writeHead(201, http.headers);
