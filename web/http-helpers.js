@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var archive = require('../helpers/archive-helpers');
+var $ = require('jquery');
 
 exports.headers = headers = {
   "access-control-allow-origin": "*",

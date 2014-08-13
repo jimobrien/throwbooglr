@@ -22,7 +22,8 @@ exports.handleRequest = function (req, res) {
     req.on('data', function(chunk) {
       body = chunk.toString().split('=')[1];
       body = body.replace(/.*?:\/\//g, ''); //woohoo regex!
-      body = archive.paths.archivedSites + '/' + body;
+      // body = archive.paths.archivedSites + '/' + body;
+      console.log(archive.isURLArchived(body));
       body = body || archive.paths.siteAssets + '/loading.html';
       res.writeHead(200, http.headers);
       http.serveAssets(res, body, "working");

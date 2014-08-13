@@ -47,11 +47,16 @@ exports.addUrlToList = function(url){
 exports.isURLArchived = function(path){
   // checks to see if archives folder contains the website, in the list, if not, fetches it
   // uses siteAssets and reads all the files in the folder --> strict file naming convention
-  return fs.readdir(exports.paths.archivedSites, function(err, files) {
-    _.filter(files, function(file) {
+  var found = false;
+
+  fs.readdir(exports.paths.archivedSites, function(err, files) {
+    found = _.contains(files, function(file) {
       return file === path;
     });
   });
+
+  return found;
+
 };
 
 exports.downloadUrls = function(url, callback){
