@@ -18,8 +18,15 @@ exports.handleRequest = function (req, res) {
     http.serveAssets(res, archive.paths.siteAssets + '/index.html', "working");
   } else if (method === 'POST') {
     // call http and server loader
-    res.writeHead(200, http.headers);
-    http.serveAssets(res, archive.paths.siteAssets + '/loading.html', "working");
+    var body;
+    req.on('data', function(chunk) {
+      body = chunk.toString().split('=')[1];
+      body = body.replace(/.*?:\/\//g, ''); //woohoo regex!
+      body = archive.paths.archivedSites + '/' + body;
+      body = body || archive.paths.siteAssets + '/loading.html';
+      res.writeHead(200, http.headers);
+      http.serveAssets(res, body, "working");
+    });
     // call archive and pull the file
   } else if (method === 'OPTIONS') {
     res.writeHead(201, http.headers);
