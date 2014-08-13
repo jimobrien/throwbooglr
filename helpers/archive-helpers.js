@@ -38,6 +38,7 @@ exports.isUrlInList = function(data, url){
 };
 
 exports.addUrlToList = function(url){
+  // opens the list file in append mode, adds the url
   fs.appendFile(exports.path.list, url, function(err) {
     if (err) throw err;
   });
@@ -46,8 +47,10 @@ exports.addUrlToList = function(url){
 exports.isURLArchived = function(path){
   // checks to see if archives folder contains the website, in the list, if not, fetches it
   // uses siteAssets and reads all the files in the folder --> strict file naming convention
-  return fs.exists(exports.paths.siteAssets + path, function(exists) {
-    return exists;
+  return fs.readdir(exports.paths.archivedSites, function(err, files) {
+    _.filter(files, function(file) {
+      return file === path;
+    });
   });
 };
 
