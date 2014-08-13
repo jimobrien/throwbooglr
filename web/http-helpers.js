@@ -18,6 +18,9 @@ exports.serveAssets = function(res, asset, callback) {
   // render index on /, loader if asset not found in archive (callback to load asset on finish)
   // and asset if found
   fs.readFile(asset, function(err, contents) {
+    if (err) {
+      res.writeHead(404, exports.headers);
+    }
     res.end(contents.toString());
   });
 };
