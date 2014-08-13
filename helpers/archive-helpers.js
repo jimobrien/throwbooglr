@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
+var fetch = require('../workers/htmlfetcher'); //fetcher function
 
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
@@ -45,7 +46,7 @@ exports.isURLArchived = function(){
   // uses siteAssets and reads all the files in the folder --> strict file naming convention
 };
 
-exports.downloadUrls = function(){
+exports.downloadUrls = function(url, callback){
   // scrapes the request url for html file. html fetcher by invoking htmlfetcher export
-  
+  fetch(url, callback);
 };

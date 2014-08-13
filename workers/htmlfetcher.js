@@ -4,7 +4,7 @@ var http = require('http-request');
 
 //invoke saltwater-get
 
-exports.get = function(pageUrl) {
+module.exports = function(pageUrl, callback) {
   http.get({
     url: pageUrl,
     progress: function (current, total) {
@@ -15,5 +15,5 @@ exports.get = function(pageUrl) {
       console.error(err);
       return;
     }
-  console.log(res.code, res.headers, res.file);
+  callback(); // callback to http helper to serve the newly downloaded file
 });
