@@ -11,6 +11,7 @@ var fetch = require('../workers/htmlfetcher'); //fetcher function
  */
 
 exports.paths = {
+  'index' : path.join(__dirname, '../web/index.html');
   'siteAssets' : path.join(__dirname, '../web/public'),
   'archivedSites' : path.join(__dirname, '../archives/sites'),
   'list' : path.join(__dirname, '../archives/sites.txt')
