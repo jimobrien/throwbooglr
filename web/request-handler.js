@@ -10,7 +10,9 @@ exports.handleRequest = function (req, res) {
   // and then route appropriately
 
   // if method is post, goto archives
+
   // if method is get, goto public -> index
-  
+
   res.end(archive.paths.list);
 };
+
