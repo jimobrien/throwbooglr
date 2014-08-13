@@ -50,9 +50,7 @@ exports.isURLArchived = function(path){
   var found = false;
 
   fs.readdir(exports.paths.archivedSites, function(err, files) {
-    found = _.contains(files, function(file) {
-      return file === path;
-    });
+    found = files.indexOf(path) > -1;
   });
 
   return found;

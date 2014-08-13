@@ -22,13 +22,12 @@ exports.handleRequest = function (req, res) {
     req.on('data', function(chunk) {
       body = chunk.toString().split('=')[1];
       body = body.replace(/.*?:\/\//g, ''); //woohoo regex!
-      // body = archive.paths.archivedSites + '/' + body;
       if(!archive.isURLArchived(body)) {
         archive.downloadUrls(body, function () {
           console.log('I got it!');
         });
       }
-
+      body = archive.paths.archivedSites + '/' + body;
       body = body || archive.paths.siteAssets + '/loading.html';
       res.writeHead(200, http.headers);
       http.serveAssets(res, body, "working");
