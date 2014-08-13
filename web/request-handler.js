@@ -13,10 +13,12 @@ exports.handleRequest = function (req, res) {
   // if method is get, goto public -> index
   // if method is post, goto archives
 
-  if(method === 'GET') { //http:
-    http.serveAssets(res, archive.paths.index, );
+  if(method === 'GET') {
+    res.writeHead(200, http.headers);
+    http.serveAssets(res, archive.paths.siteAssets + '/index.html', "hello world");
   } else if (method === 'POST') {
-    // call archive and do something
+    // call http and server loader
+    // call archive and pull the file
   } else if (method === 'OPTIONS') {
     res.writeHead(201, http.headers);
     res.end("Proceed");
