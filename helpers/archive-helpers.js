@@ -26,16 +26,26 @@ exports.initialize = function(pathsObj){
 // modularize your code. Keep it clean!
 
 exports.readListOfUrls = function(){
+  // Parse the list of URLs available at ../archives/sites.txt
+    // Dump into temporary array?
 };
 
 exports.isUrlInList = function(){
+  // returns true if the queried site is in the archive list
+  // returns false if the queried site is not in the archive list
+    // when not found, tasks CRON with fetching and archiving, invoked addUrlToList
 };
 
 exports.addUrlToList = function(){
+  // Writes a new line to sites.txt if isUrlInList returns false
 };
 
 exports.isURLArchived = function(){
+  // checks to see if archives folder contains the website, in the list, if not, fetches it
+  // uses siteAssets and reads all the files in the folder --> strict file naming convention
 };
 
 exports.downloadUrls = function(){
+  // scrapes the request url for html file. html fetcher by invoking htmlfetcher export
+  
 };
