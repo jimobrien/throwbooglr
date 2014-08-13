@@ -8,5 +8,9 @@ exports.handleRequest = function (req, res) {
 
   // Parse the type of request based on Client (HTTP), or List Interaction (Archive)
   // and then route appropriately
+
+  // if method is post, goto archives
+  // if method is get, goto public -> index
+  
   res.end(archive.paths.list);
 };

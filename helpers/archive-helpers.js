@@ -23,27 +23,32 @@ exports.initialize = function(pathsObj){
   });
 };
 
-// The following function names are provided to you to suggest how you might
-// modularize your code. Keep it clean!
-
 exports.readListOfUrls = function(){
-  // Parse the list of URLs available at ../archives/sites.txt
-    // Dump into temporary array?
+  // Traverse the list of URLs available at ../archives/sites.txt
+  fs.readFile(exports.paths.list, 'r', function(err, data) {
+    if (err) throw err;
+    return data;
+  });
 };
 
-exports.isUrlInList = function(){
+exports.isUrlInList = function(data, url){
   // returns true if the queried site is in the archive list
   // returns false if the queried site is not in the archive list
-    // when not found, tasks CRON with fetching and archiving, invoked addUrlToList
+  return data.search(url) !== -1; // Does the url string exist in the data passed in?
 };
 
-exports.addUrlToList = function(){
-  // Writes a new line to sites.txt if isUrlInList returns false
+exports.addUrlToList = function(url){
+  fs.appendFile(exports.path.list, url, function(err) {
+    if (err) throw err;
+  });
 };
 
-exports.isURLArchived = function(){
+exports.isURLArchived = function(path){
   // checks to see if archives folder contains the website, in the list, if not, fetches it
   // uses siteAssets and reads all the files in the folder --> strict file naming convention
+  return fs.exists(exports.paths.siteAssets + path, function(exists) {
+    return exists;
+  });
 };
 
 exports.downloadUrls = function(url, callback){
