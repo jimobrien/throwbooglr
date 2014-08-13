@@ -25,22 +25,24 @@ exports.initialize = function(pathsObj){
 
 exports.readListOfUrls = function(){
   // Traverse the list of URLs available at ../archives/sites.txt
-  fs.readFile(exports.paths.list, 'r', function(err, data) {
-    if (err) throw err;
-    return data;
+  var sites = [];
+  fs.readFile(exports.paths.list, {encoding: 'utf8'}, function(err, data) {
+    if (err) console.log(err);
+    data.split('\n').forEach(function(site) {sites.push(site);});
   });
+  return sites;
 };
 
 exports.isUrlInList = function(data, url){
   // returns true if the queried site is in the archive list
   // returns false if the queried site is not in the archive list
-  return data.search(url) !== -1; // Does the url string exist in the data passed in?
+  return data.indexOf(url) > -1; // Does the url string exist in the data passed in?
 };
 
 exports.addUrlToList = function(url){
   // opens the list file in append mode, adds the url
-  fs.appendFile(exports.path.list, url, function(err) {
-    if (err) throw err;
+  fs.appendFile(exports.paths.list, url, function(err) {
+    if (err) console.log(err);
   });
 };
 

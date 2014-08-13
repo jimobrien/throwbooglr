@@ -18,7 +18,6 @@ exports.serveAssets = function(res, asset, callback) {
   // render the appropriate file based on the request and availability
   // render index on /, loader if asset not found in archive (callback to load asset on finish)
   // and asset if found
-  console.log(asset);
   fs.readFile(asset, function(err, contents) {
     if (err) {
       res.writeHead(404, exports.headers);
