@@ -15,5 +15,6 @@ module.exports = function(pageUrl, callback) {
       console.error(err);
       return;
     }
-  callback(); // callback to http helper to serve the newly downloaded file
-});
+    callback(); // callback to http helper to serve the newly downloaded file
+  });
+};
