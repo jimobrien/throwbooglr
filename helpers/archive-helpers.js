@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
 var fetch = require('../workers/htmlfetcher'); //fetcher function
+var CronJob = require('cron').CronJob;
 
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
@@ -72,4 +73,6 @@ var cronify = function() {
   });
 };
 
-cronify();
+new CronJob('*/1 * * * *', function(){
+  cronify();
+}, null, true);
