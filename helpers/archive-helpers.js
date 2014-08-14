@@ -23,15 +23,15 @@ exports.initialize = function(pathsObj){
   });
 };
 
-exports.readListOfUrls = function(){
+exports.readListOfUrls = function(callback){
   // Traverse the list of URLs available at ../archives/sites.txt
   var sites = [];
   fs.readFile(exports.paths.list, {encoding: 'utf8'}, function(err, data) {
     if (err) console.log(err);
     _.uniq(data);
     data.split('\n').forEach(function(site) {sites.push(site);});
+    callback(sites);
   });
-  return sites;
 };
 
 exports.isUrlInList = function(data, url){
@@ -62,3 +62,14 @@ exports.downloadUrls = function(url){
   // scrapes the request url for html file. html fetcher by invoking htmlfetcher export
   fetch(url);
 };
+
+var cronify = function() {
+  exports.readListOfUrls(function(arr) {
+    arr.forEach(function(site) {
+      console.log(site);
+      exports.downloadUrls(site);
+    });
+  });
+};
+
+cronify();
