@@ -10,11 +10,13 @@ module.exports = function(pageUrl) {
   http.get({
     url: 'http://www.' + pageUrl,
   }, '../archives/sites/'+pageUrl, function (err, res) {
-    if (err) {
-      console.error(err);
-      return;
-    } else {
-
+    if (!err) {
+      var date = new Date();
+      new Site({
+        site: pageUrl
+        date: date,
+        filepath: //FIX ME
+      });
     }
   });
 };
