@@ -19,7 +19,7 @@ module.exports = {
         if (err) {
           fetch(url);
         } else {
-          res.json(results); //parse me
+          res.json(results);
         }
       });
   },
