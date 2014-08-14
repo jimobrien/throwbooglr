@@ -5,6 +5,7 @@
   "author": "Hack Reactor",
   "license": "Copyright 2013, Hack Reactor. All rights reserved.",
   "dependencies": {
+    "azure-storage": "^0.3.2",
     "express": "~4.8.3",
     "firebase": "^1.0.19",
     "http-request": "^0.6.3",
