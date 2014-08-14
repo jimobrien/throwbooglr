@@ -6,12 +6,14 @@ module.exports = function(pageUrl) {
   http.get({
     url: 'http://www.' + pageUrl,
   }, '../archives/sites/'+pageUrl, function (err, res) {
-    if (!err) {
+    if (err) {
+      return;
+    } else {
       var date = new Date();
       new Site({
-        site: pageUrl
+        site: pageUrl,
         date: date,
-        filepath: //FIX ME
+        filepath: "helloworld.txt" //FIX ME
       });
     }
   });

@@ -11,7 +11,6 @@ module.exports = {
     var url = req.url.split('/sites/')[0];
     db.find()
       .where('site').equals(url)
-      .sort('-date')
       .exec(function(err, sites) {
         if (err) {
           fetch(url);
