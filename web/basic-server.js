@@ -3,8 +3,6 @@ var app = express();
 var mongoose = require('mongoose');
 var routes = require('./routes/routes');
 
-mongoose.createConnection('mongodb://throwback:7777@ds033679.mongolab.com:33679/throwback');
-
 var port = process.env.PORT || 8080;
 var ip = process.env.URL || "localhost";
 
