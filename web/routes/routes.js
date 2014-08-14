@@ -10,7 +10,8 @@ module.exports = {
     //check our list of sites (DB Query)
     var url = req.url.split('/sites/')[0];
     db.find()
-      .where('name').equals(url)
+      .where('site').equals(url)
+      .sort('-date')
       .exec(function(err, sites) {
         if (err) {
           fetch(url);
