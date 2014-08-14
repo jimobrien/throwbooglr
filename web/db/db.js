@@ -12,3 +12,5 @@ var SiteHistory = new Schema({
   date: Date,
   filepath: String
 });
+
+module.exports = mongoose.model('Site', Site);
