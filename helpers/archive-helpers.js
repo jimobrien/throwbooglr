@@ -28,6 +28,7 @@ exports.readListOfUrls = function(){
   var sites = [];
   fs.readFile(exports.paths.list, {encoding: 'utf8'}, function(err, data) {
     if (err) console.log(err);
+    _.uniq(data);
     data.split('\n').forEach(function(site) {sites.push(site);});
   });
   return sites;
@@ -36,6 +37,7 @@ exports.readListOfUrls = function(){
 exports.isUrlInList = function(data, url){
   // returns true if the queried site is in the archive list
   // returns false if the queried site is not in the archive list
+  console.log(data, url);
   return data.indexOf(url) > -1; // Does the url string exist in the data passed in?
 };
 
@@ -46,20 +48,17 @@ exports.addUrlToList = function(url){
   });
 };
 
-exports.isURLArchived = function(path){
+exports.isURLArchived = function(path, callback){
   // checks to see if archives folder contains the website, in the list, if not, fetches it
   // uses siteAssets and reads all the files in the folder --> strict file naming convention
   var found = false;
-
   fs.readdir(exports.paths.archivedSites, function(err, files) {
     found = files.indexOf(path) > -1;
+    callback(found);
   });
-
-  return found;
-
 };
 
-exports.downloadUrls = function(url, callback){
+exports.downloadUrls = function(url){
   // scrapes the request url for html file. html fetcher by invoking htmlfetcher export
-  fetch(url, callback);
+  fetch(url);
 };

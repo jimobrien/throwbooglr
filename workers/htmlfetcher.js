@@ -5,21 +5,13 @@ var archive = require('../helpers/archive-helpers');
 
 //invoke saltwater-get
 
-module.exports = function(pageUrl, callback) {
+module.exports = function(pageUrl) {
   http.get({
     url: 'http://' + pageUrl,
-    progress: function (current, total) {
-      console.log('downloaded %d bytes from %d', current, total);
-    }
   }, '../archives/sites/'+pageUrl, function (err, res) {
     if (err) {
       console.error(err);
       return;
     }
-    var data = archive.readListOfUrls();
-    if (!archive.isUrlInList(data, pageUrl)) {
-      archive.addUrlToList('\n' + pageUrl);
-    }
-    callback(); // callback to http helper to serve the newly downloaded file
   });
 };
