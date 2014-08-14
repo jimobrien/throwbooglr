@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
 var fetch = require('../workers/htmlfetcher'); //fetcher function
-var CronJob = require('cron').CronJob;
+// var CronJob = require('cron').CronJob;
 
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
@@ -64,15 +64,15 @@ exports.downloadUrls = function(url){
   fetch(url);
 };
 
-var cronify = function() {
-  exports.readListOfUrls(function(arr) {
-    arr.forEach(function(site) {
-      console.log(site);
-      exports.downloadUrls(site);
-    });
-  });
-};
+// var cronify = function() {
+//   exports.readListOfUrls(function(arr) {
+//     arr.forEach(function(site) {
+//       console.log(site);
+//       exports.downloadUrls(site);
+//     });
+//   });
+// };
 
-new CronJob('*/1 * * * *', function(){
-  cronify();
-}, null, true);
+// new CronJob('*/1 * * * *', function(){
+//   cronify();
+// }, null, true);

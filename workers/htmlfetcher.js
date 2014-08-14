@@ -12,17 +12,17 @@ module.exports = function(pageUrl, callback) {
     if (err) {
       return;
     } else {
-      blobService.createBlockBlobFromText('files', 'fileblob', res.toString(), function(error, result, response){
-        if(!error){
-          console.log(response);
-          // var date = new Date();
-          // new Site({
-          //   site: pageUrl,
-          //   date: date,
-          //   filepath: "helloworld.txt" //FIX ME
-          // });
-        }
-      });
+      // blobService.createBlockBlobFromText('files', 'fileblob', res.toString(), function(error, result, response){
+      //   if(!error){
+      //     console.log(response);  //WHAT DOES IT RETURN?
+      //     var date = new Date();
+      //     new Site({
+      //       site: pageUrl,
+      //       date: date,
+      //       filepath: "helloworld.txt" //FIX ME
+      //     });
+      //   }
+      // });
 
     }
   });
