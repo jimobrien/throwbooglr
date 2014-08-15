@@ -1,9 +1,47 @@
 body {
   margin : 0px;
+  font-size: 16px;
   font-family: arial, sans-serif;
+  background: #F4EFE8;
 }
+
+input {
+  background: #fff;
+  border: 1px solid #fff;
+  height: 20px;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border: 3px solid #CE6D61;
+}
+input:focus {
+  outline: 0;
+}
+
+::-webkit-input-placeholder {
+	font-size: 16px;
+ 	color: #999;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	font-size: 16px;
+ 	color: #999;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	font-size: 16px;
+ 	color: #999;  
+}
+
+:-ms-input-placeholder {  
+	font-size: 16px;
+ 	color: #999;  
+}
+
 .header {
+	color: #CE6D61;
 	text-align: center;
+	font-family: 'Gloria Hallelujah', sans-serif;
 	padding: 1em 0;
 	font-size: 3em;
 }
@@ -12,8 +50,7 @@ body {
 	-moz-transition: .26 ease-in-out;
 	-o-transition: .26 ease-in-out;
 	transition: .26s ease-in-out;
-	transform: translate(-11em, -1.7em);
-	/*transform: scale(0.8);*/
+	transform: translate(-11em, -1.5em);
 }
 
 
@@ -36,11 +73,9 @@ body {
 /* site thumbs */
 .sites {
   transition: .25s;
-  animation-name: slideIn;
   left: 0;
 }
 .sites.offscreen {
-	animation-name: slideIn;
   position: relative;
   overflow: hidden;
   width: 100px;
@@ -69,6 +104,6 @@ body {
 	width: 22% !important;
 	padding: 0;
 	margin: 10px;
-	background: #ddd;
+	border: 3px solid #6B7162;
 	
 }
