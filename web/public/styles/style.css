@@ -2,7 +2,7 @@ body {
   margin : 0px;
   font-size: 16px;
   font-family: arial, sans-serif;
-  background: #F4EFE8;
+  background: #F5F1E1;
 }
 
 input {
@@ -12,7 +12,7 @@ input {
   width: 100%;
   padding: 20px;
   background: #fff;
-  border: 3px solid #CE6D61;
+  /*border: 3px solid #E0E9EC;*/
 }
 input:focus {
   outline: 0;
@@ -39,7 +39,7 @@ input:focus {
 }
 
 .header {
-	color: #CE6D61;
+	color: #E16625;
 	text-align: center;
 	font-family: 'Gloria Hallelujah', sans-serif;
 	padding: 1em 0;
@@ -50,7 +50,7 @@ input:focus {
 	-moz-transition: .26 ease-in-out;
 	-o-transition: .26 ease-in-out;
 	transition: .26s ease-in-out;
-	transform: translate(-11em, -1.5em);
+	transform: translate(-10em, -1.5em);
 }
 
 
@@ -100,7 +100,7 @@ input:focus {
 
 .site-container {
 	text-align: center;
-	height: 145px;
+	height: 250px;
 	width: 22% !important;
 	padding: 0;
 	margin: 10px;

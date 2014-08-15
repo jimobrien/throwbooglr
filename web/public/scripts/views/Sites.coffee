@@ -4,7 +4,7 @@ class Throwboogler.Views.Sites extends Backbone.View
 	template: '<div class="col-md-offset-1 col-md-10 sites offscreen"></div>'
 
 	initialize: ->
-		@collection.on 'add remove change', (asd) ->
+		@collection.on 'reset', () ->
 			@render()
 		, @
 
@@ -16,4 +16,5 @@ class Throwboogler.Views.Sites extends Backbone.View
 			@collection.map (site) -> 
 				new Throwboogler.Views.Site( model: site ).$el
 			)
+		@$('.sites').removeClass('offscreen')
 		@

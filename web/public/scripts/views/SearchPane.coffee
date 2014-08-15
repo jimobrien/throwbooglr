@@ -3,7 +3,7 @@ class Throwboogler.Views.SearchPane extends Backbone.View
 
 	template: _.template '<div class="row">
 													<div class="col-md-offset-2 col-md-8">
-														<input class="searchbox" placeholder="Enter a site here.. (e.g. google.com)"></input>
+														<input class="searchbox" placeholder="Enter a site here to start throwboogle\'n!"></input>
 													</div>
 												</div>'
 
@@ -18,7 +18,7 @@ class Throwboogler.Views.SearchPane extends Backbone.View
 				$target.val ''
 				@$el.addClass 'searchbox-top'
 				$('.header').addClass 'header-top'
-				$('.sites').removeClass 'offscreen'
+				# $('.sites').removeClass 'offscreen'
 				
 
 	render: ->
