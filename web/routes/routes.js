@@ -9,9 +9,8 @@ module.exports = {
     res.sendFile(__dirname + '/public/index.html');
   },
   handler: function(req, res) {
-    console.log('someone tickled me...');
     var url = req.query.name;
-
+    console.log(url);
     search(url, res);
   },      
 }
@@ -21,6 +20,7 @@ var collectBlob = function(item, object) {
     if(!error){  //switch to !error
       var text = result.toString();
       object[item.date] = text;
+      console.log(object);
     }
   });
 };
