@@ -23,7 +23,7 @@ module.exports = function(pageUrl) {
             site: pageUrl,
             date: date,
             filepath: hex
-          });
+          }).save(function(err){return;});;
         }
       });
     }
