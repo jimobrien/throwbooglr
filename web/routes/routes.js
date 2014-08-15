@@ -13,31 +13,29 @@ module.exports = {
     console.log('someone tickled me...');
     //check our list of sites (DB Query)
     var url = req.query.name;
-    var results = {};
-
     Site.find()
       .where('site').equals(url)
       .exec(function(err, sites) {
-        if (sites.length > 0) {  // Check that its not an empty array
-          sites.forEach(function(site) { //parse each site for clear results
-            blobService.getBlobToText('files', site.filepath, function(error, result, response){
-              if(!error){  //switch to !error
-                var text = result.toString();
-                console.log(result); // WHAT IS IT GIVING ME?
-              } else {
-                fetch(url);
-              }
-            });
-          });
+        if (sites.length > 0) {
+          var results = collectBlobs(sites);
           res.json(results);
+        } else {
+          fetch(url);  
         }
-        // if (err) {
-          // fetch(url);
-        // } else {
-          // res.json({date: '<html><body><h1>HELLO WORLD</h1></body></html>'});
-        // }
       });
-    // module.exports.queryDB(url);
-  },
-      
+  },      
+}
+
+var collectBlobs = function(array) {
+  var results = {};
+  array.forEach(function(item) { //parse each site, pull Blobs and inject results
+    blobService.getBlobToText('files', item.filepath, function(error, result, response){
+      if(!error){  //switch to !error
+        var text = result.toString();
+        console.log(result); // WHAT IS IT GIVING ME?
+        results[item.date] = text;
+      }
+    });
+  });
+  return results;
 }
