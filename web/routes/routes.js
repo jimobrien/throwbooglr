@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var fetch = require('../../workers/htmlfetcher');
 var Site = require('../db/db');
-var fs = require('fs');
+// var fs = require('fs');
+var q = require('q');
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
 
@@ -12,31 +13,43 @@ module.exports = {
   handler: function(req, res) {
     console.log('someone tickled me...');
     var url = req.query.name;
+    var results = {};
 
     Site.find()
       .where('site').equals(url)
       .exec(function(err, sites) {
-        if (sites.length > 0) {
-          var results = collectBlobs(sites);
-          res.json({"12-24-12": "<html><body><h1>IM A SITE YO</h1></body></html>"}); //placeholder
+        
+        var promises = [];
+
+        for (var i = sites.length - 1; i >= 0; i--) {
+          promises.push( collectBlob(sites[i], results) )
+        };
+
+        // var siteLength = sites.length;
+        // var counter = sites.length;
+        // if (siteLength > 0) {
+        //     sites.forEach(function(site) {
+        //       collectBlob(sites, results);
+        //   }
+        // }
+        $.when(promises).then(function () {
+          console.log(promises);
           // res.json(results);
-        } else {
-          fetch(url);  
-        }
+        })
       });
+      // .done(function() {
+      //   res.json(results);
+      // });
+      
 
   },      
 }
 
-var collectBlobs = function(array) {
-  var results = {};
-  array.forEach(function(item) { //parse each site, pull Blobs and inject results
-    blobService.getBlobToText('files', item.filepath, function(error, result, response){
-      if(!error){  //switch to !error
-        var text = result.toString();
-        results[item.date] = text;
-      }
-    });
+var collectBlob = function(item, object) {
+  blobService.getBlobToText('files', item.filepath, function(error, result, response){
+    if(!error){  //switch to !error
+      var text = result.toString();
+      object[item.date] = text
+    }
   });
-  return results;
 }
