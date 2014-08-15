@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes/routes');
 
 var port = process.env.PORT || 3000;
-var ip = process.env.URL || "10.4.11.249" || "localhost";
+var ip = process.env.URL || "10.4.11.249";
 
 app.use(express.static(__dirname + '/public'));
 
