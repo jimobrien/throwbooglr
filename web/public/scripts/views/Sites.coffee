@@ -1,14 +1,19 @@
 class Throwboogler.Views.Sites extends Backbone.View
 	className: 'row sites-container'
 
-	template: '<div class="col-md-offset-1 col-md-10 sites offscreen"></div>'
+	# template: '<div class="col-md-offset-1 col-md-10 sites"></div>'
+	template: '<div class="col-md-offset-2 col-md-8">
+							<h5 class="hidden"> ARCHIVES </h5>
+							<ul class="sites list-unstyled"></ul>
+						</div>'
 
 	initialize: ->
+		console.log @$el
 		@collection.on 'reset', () ->
 			@render()
 		, @
 
-		@render()
+		# @render()
 
 	render: ->
 		@$el.html @template
@@ -16,5 +21,5 @@ class Throwboogler.Views.Sites extends Backbone.View
 			@collection.map (site) -> 
 				new Throwboogler.Views.Site( model: site ).$el
 			)
-		@$('.sites').removeClass('offscreen')
+		@$('h5').removeClass('hidden')
 		@

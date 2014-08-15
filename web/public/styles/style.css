@@ -71,17 +71,10 @@ input:focus {
 
 
 /* site thumbs */
-.sites {
+/*.sites {
   transition: .25s;
   left: 0;
-}
-.sites.offscreen {
-  position: relative;
-  overflow: hidden;
-  width: 100px;
-  height: 100px; 
-	left: -9999px;
-}
+}*/
 
 /*@keyframes slideIn {
 
@@ -95,7 +88,8 @@ input:focus {
 
 
 .sites-container { 
-  
+	margin: 2em 0;
+  text-align: center;
 }
 
 .site-container {
@@ -104,6 +98,14 @@ input:focus {
 	width: 22% !important;
 	padding: 0;
 	margin: 10px;
-	border: 3px solid #6B7162;
-	
+	/*border: 3px solid #6B7162;*/
+  /*transition: .25s;
+  left: 0;*/
+}
+.site-container.offscreen {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 100px; 
+	left: -9999px;
 }

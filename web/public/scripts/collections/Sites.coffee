@@ -7,10 +7,10 @@ class Throwboogler.Collections.Sites extends Backbone.Collection
 
 		@on 'search', (site) ->
 			site = name: site
-			# @reset site # for testing offline
-			@fetch( data: site, reset: true ).success( (data) => 
-				# @.trigger('render:site-history', data)
-			)
+			@reset site # for testing offline
+			# @fetch( data: site, reset: true ).success( (data) => 
+			# 	# @.trigger('render:site-history', data)
+			# )
 		, @
 
 		@on 'add reset', (site) ->

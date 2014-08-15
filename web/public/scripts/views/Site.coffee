@@ -1,7 +1,10 @@
 class Throwboogler.Views.Site extends Backbone.View
-	className: 'col-md-3 site-container'
+	tagName: 'li'
 
-	template: _.template '<object  width="100%" height="100%" data="<%= url %>"></object>'
+	className: ''
+
+	template: _.template '<a href="<%= url %>"> <%= url %> </a>'
+	# template: _.template '<object type="text/html" width="100%" height="100%" data="<%= url %>"></object>'
 
 	initialize: ->
 		@render()
@@ -10,12 +13,8 @@ class Throwboogler.Views.Site extends Backbone.View
 		model = @model.toJSON()
 		model = 
 			url: model[Object.keys(model)[0]]
+		
 
 		@$el.html @template model
-
-		console.log @$el
-		# @$el.ready( () =>
-				# console.log this
-        # @contents().find('body').html('Hey, i`ve changed content of <body>! Yay!!!')
-		# )
+		# setTimeout( () => @$el.removeClass 'offscreen', 500)
 		@
