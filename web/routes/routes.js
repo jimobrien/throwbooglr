@@ -11,18 +11,20 @@ module.exports = {
   },
   handler: function(req, res) {
     console.log('someone tickled me...');
-    //check our list of sites (DB Query)
     var url = req.query.name;
+
     Site.find()
       .where('site').equals(url)
       .exec(function(err, sites) {
         if (sites.length > 0) {
           var results = collectBlobs(sites);
-          res.json(results);
+          res.json({"12-24-12": "<html><body><h1>IM A SITE YO</h1></body></html>"}); //placeholder
+          // res.json(results);
         } else {
           fetch(url);  
         }
       });
+
   },      
 }
 
@@ -32,7 +34,6 @@ var collectBlobs = function(array) {
     blobService.getBlobToText('files', item.filepath, function(error, result, response){
       if(!error){  //switch to !error
         var text = result.toString();
-        console.log(result); // WHAT IS IT GIVING ME?
         results[item.date] = text;
       }
     });
