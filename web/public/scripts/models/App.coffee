@@ -3,6 +3,6 @@ class Throwboogler.Models.App extends Backbone.Model
 		@set 'sites', sites = new Throwboogler.Collections.Sites()
 
 		@on 'input:search', ($target) ->
-			sites.add $target.val()
+			sites.trigger 'search', $target.val() #google.com
 		, @
 			

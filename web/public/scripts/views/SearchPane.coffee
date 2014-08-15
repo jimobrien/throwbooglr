@@ -16,6 +16,9 @@ class Throwboogler.Views.SearchPane extends Backbone.View
 				$target = $(event.target)
 				@model.trigger('input:search', $target)
 				$target.val ''
+				@$el.toggleClass 'searchbox-top'
+				$('.header').addClass 'header-top'
+				$('.sites').removeClass 'offscreen'
 				
 
 	render: ->
