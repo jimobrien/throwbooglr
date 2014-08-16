@@ -15,13 +15,10 @@ class Throwboogler.Views.SearchPane extends Backbone.View
 			if event.keyCode == 13
 				$target = $(event.target)
 				@model.trigger('input:search', $target)
-				# @trigger('input:search', $target)
 				$target.val ''
-				# @$el.addClass 'searchbox-top'
-				# $('.header').addClass 'header-top'
-				# $('.sites').removeClass 'offscreen'
 				
 
 	render: ->
 		@$el.html @template
+		console.log @$el
 		@
