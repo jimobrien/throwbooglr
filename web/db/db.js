@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://throwback:7777@ds033679.mongolab.com:33679/throwback');
+mongoose.connect(process.env.DB);
 
 var Schema = mongoose.Schema;
 
