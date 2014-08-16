@@ -31,8 +31,7 @@ var search = function(url, res) {
         res.json(result);
       } else {
         fetch(url, function (err, response) {
-          // temporary
-          console.log(response);
+          // temporary. needs severe cleanup..
           var date = new Date();
           date = date.toLocaleDateString();
           var obj = {};
