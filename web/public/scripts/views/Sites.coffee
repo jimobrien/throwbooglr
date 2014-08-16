@@ -21,5 +21,6 @@ class Throwboogler.Views.Sites extends Backbone.View
 			@collection.map (site) -> 
 				new Throwboogler.Views.Site( model: site ).$el
 			)
+		@$(".livepreview").livePreview offset: 0
 		@$('h5').removeClass('hidden')
 		@
