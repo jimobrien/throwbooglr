@@ -1,10 +1,14 @@
-var express = require('express');
-var app = express();
+process.env['AZURE_STORAGE_ACCOUNT'] = 'throwbackdev';
+process.env['AZURE_STORAGE_ACCESS_KEY'] = 'sJKAvJVORP0Kzq/EWUQ/J9HOF/3EaO49HkMA3SzZE59GHDyb6x3Ne4YiVvZc+vFODEBTE9sxP8JOVkauNE4vaQ==';
+console.log(process.env)
+
 var mongoose = require('mongoose');
-var routes = require('./routes/routes');
+var express  = require('express');
+var routes   = require('./routes/routes');
+var app      = express();
 
 var port = process.env.PORT || 3000;
-var ip = process.env.URL || "10.4.11.249";
+var ip   = process.env.URL || 'localhost'; //"10.4.11.249";
 
 app.use(express.static(__dirname + '/public'));
 
@@ -17,14 +21,10 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/', routes.index); // serves static index
-app.get('/sites', routes.handler) // all search queries are handled as get
+app.get('/sites', routes.handler); // all search queries are handled as get
 app.options('*', function() {
   res.writeHead(200);
 });
 
 app.listen(port, ip);
 console.log("Listening on http://" + ip + ":" + port);
-
-var headers = {
-  
-};

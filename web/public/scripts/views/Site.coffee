@@ -14,7 +14,5 @@ class Throwboogler.Views.Site extends Backbone.View
 		model = 
 			url: model[Object.keys(model)[0]]
 		
-
 		@$el.html @template model
-		# setTimeout( () => @$el.removeClass 'offscreen', 500)
 		@

@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
-var fetch = require('../../workers/htmlfetcher');
-var Site = require('../db/db');
-var azure = require('azure-storage');
+var fetch    = require('../../workers/htmlfetcher');
+var Site     = require('../db/db');
+var azure    = require('azure-storage');
+
 var blobService = azure.createBlobService();
+
+
 
 module.exports = {
   index: function(req, res) {
@@ -22,11 +25,33 @@ var search = function(url, res) {
     .exec(function(err, sites) {
       if(sites.length > 0) {        
         sites.forEach(function(site) {
-          result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
+          result.site = url;
+          result[site.date] = 'https://throwbackdev.blob.core.windows.net/files/' + site.filepath;
         });
         res.json(result);
       } else {
-        fetch(url);
+        fetch(url, function (err, response) {
+          // temporary
+          console.log(response);
+          var date = new Date();
+          date = date.toLocaleDateString();
+          var obj = {};
+          obj[date] = 'https://throwbackdev.blob.core.windows.net/files/' + response.blob;
+
+          createEntry(url, response.blob);
+
+          res.json(obj);
+        });
       }
     });
+};
+
+var createEntry = function(url, hex) {
+  var date = new Date();
+  date = date.toLocaleDateString();
+  new Site({
+    site: url,
+    date: date,
+    filepath: hex
+  }).save();
 };
