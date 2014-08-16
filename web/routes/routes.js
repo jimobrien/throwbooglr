@@ -10,34 +10,23 @@ module.exports = {
   },
   handler: function(req, res) {
     var url = req.query.name;
-    console.log(url);
+    console.log('Tickled with:', url);
     search(url, res);
   },      
-}
-
-var collectBlob = function(item, object) {
-  blobService.getBlobToText('files', item.filepath, function(error, result, response){
-    if(!error){  //switch to !error
-      var text = result.toString();
-      object[item.date] = text;
-      console.log(object);
-    }
-  });
 };
 
-var search = function(url, response) {
-  var results = [];
+var search = function(url, res) {
+  var result = {};
   Site.find()
     .where('site').equals(url)
-    .exec(function(err, sites) {        
-      var siteLength = sites.length;
-      if (siteLength > 0) {
+    .exec(function(err, sites) {
+      if(sites.length > 0) {        
         sites.forEach(function(site) {
-          collectBlob(site, results)
+          result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
         });
+        res.json(result);
+      } else {
+        fetch(url);
       }
-    })
-    .addBack(function(err, results) {
-      response.json(results);
     });
-}
+};

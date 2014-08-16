@@ -14,7 +14,7 @@ module.exports = function(pageUrl) {
       var hex = parseInt(Math.random() * 16777216, 16).toString();
       blobService.createBlockBlobFromText('files', hex, res.buffer.toString(), function(error, result, response){
         if(!error){
-          createEntry(url, hex);
+          createEntry(pageUrl, hex);
         }
       });
     }
@@ -23,8 +23,9 @@ module.exports = function(pageUrl) {
 
 var createEntry = function(url, hex) {
   var date = new Date();
+  date = date.toLocaleDateString();
   new Site({
-    site: pageUrl,
+    site: url,
     date: date,
     filepath: hex
   }).save(function(err){return;});
