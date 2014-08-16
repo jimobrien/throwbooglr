@@ -1,0 +1,24 @@
+{
+  "name": "throwboogler",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jimobrien/2014-07-web-historian",
+  "authors": [
+    "Jim OBrien <jimobrien930@gmail.com>",
+    "Jarrod Ruhland <jarrod.ruhland@gmail.com>"
+  ],
+  "description": "Archive the web",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "bootstrap": "~3.2.0"
+  }
+}
