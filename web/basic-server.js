@@ -1,7 +1,3 @@
-process.env['AZURE_STORAGE_ACCOUNT'] = 'throwbackdev';
-process.env['AZURE_STORAGE_ACCESS_KEY'] = 'sJKAvJVORP0Kzq/EWUQ/J9HOF/3EaO49HkMA3SzZE59GHDyb6x3Ne4YiVvZc+vFODEBTE9sxP8JOVkauNE4vaQ==';
-console.log(process.env)
-
 var mongoose = require('mongoose');
 var express  = require('express');
 var routes   = require('./routes/routes');

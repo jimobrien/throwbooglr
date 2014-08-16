@@ -12,7 +12,7 @@ class Throwboogler.Views.Site extends Backbone.View
 		model = @model.toJSON()
 		console.log model, 'MODEL LOG'
 		model = 
-			date: Object.keys(model)[1]
+			date: new Date(Object.keys(model)[1]).toLocaleDateString()
 			url: model[Object.keys(model)[1]]
 		
 		@$el.html @template model
