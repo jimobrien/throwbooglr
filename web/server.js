@@ -24,6 +24,5 @@ app.options('*', function() {
 });
 
 app.listen(port, ip);
-console.log("Listening on http://" + ip + ":" + port);
 
-// cron();
+cron();

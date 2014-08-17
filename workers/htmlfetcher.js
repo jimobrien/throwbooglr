@@ -16,6 +16,7 @@ module.exports = function(pageUrl, callback) {
 
       blobService.createBlockBlobFromText('files', hex, res.buffer.toString(), function(error, result, response){
         if(!error){
+          console.log('creating blobs and entries with: ', pageUrl, hex);
           helpers.createEntry(pageUrl, hex);
           blobService.setBlobProperties('files', hex, {'contentType': 'text/html'}, callback);
         }

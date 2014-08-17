@@ -26,7 +26,6 @@ var cronOut = function() { //change me
           date = date.toLocaleDateString();
           var obj = {};
           obj[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
-          helpers.createEntry(url, response.blob);
         });
       }
     });
