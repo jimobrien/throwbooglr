@@ -1,10 +1,11 @@
+var express = require('express');
+var routes = require('./routes/routes');
+var app = express();
 var mongoose = require('mongoose');
-var express  = require('express');
-var routes   = require('./routes/routes');
-var app      = express();
+var cron = require('./db/cron');
 
 var port = process.env.PORT || 3000;
-var ip   = process.env.URL || 'localhost'; //"10.4.11.249";
+var ip = process.env.URL || "10.4.11.249";
 
 app.use(express.static(__dirname + '/public'));
 
@@ -24,3 +25,5 @@ app.options('*', function() {
 
 app.listen(port, ip);
 console.log("Listening on http://" + ip + ":" + port);
+
+// cron();
