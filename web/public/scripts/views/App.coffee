@@ -3,7 +3,7 @@ class Throwboogler.Views.App extends Backbone.View
 
 	template: _.template '<div class="row search">
 													<div class="header">
-														<span class="title">throwbOOgler</span>
+														<span class="title">throwbOOglr</span>
 													</div>
 												</div>
 											 '
