@@ -3,7 +3,7 @@ class Throwboogler.Views.SearchPane extends Backbone.View
 
 	template: _.template '<div class="row">
 													<div class="col-md-offset-2 col-md-8 searchbox-container">
-														<input class="searchbox" placeholder="Enter a site here to start throwboogle\'n!"></input>
+														<input class="searchbox" placeholder="Enter a site here to start throwbooglen\'"></input>
 													</div>
 													<div id="loader" class="hidden">
 														<div id="d1"></div>

@@ -10,7 +10,7 @@
     /*background-repeat:no-repeat;*/
     /*background-position:center center;*/
     position:absolute;
-    border:solid 3px #E16625;
+    border:solid 3px #fcfcfc;
     border-radius:3px;
     -moz-border-radius: 3px;
     -webkit-border-radius:3px;
@@ -34,7 +34,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-right-color: #E16625;
+    border-right-color: #fcfcfc;
     border-width: 20px;
     top: 50%;
     margin-top: -20px;
@@ -44,7 +44,7 @@
 #livepreview_dialog.left:after {
     right:0;
     margin-right:-35px;
-    border-left-color: #E16625;
+    border-left-color: #fcfcfc;
     border-width: 20px;
     top: 50%;
     margin-top: -20px;
