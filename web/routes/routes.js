@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var fetch    = require('../../workers/htmlfetcher');
 var Site     = require('../db/db');
 var azure    = require('azure-storage');
-var helpers = require('../helpers/helpers.js');
 
 var blobService = azure.createBlobService();
 
@@ -22,9 +21,9 @@ var search = function(url, res) {
     .where('site').equals(url)
     .exec(function(err, sites) {
       if(sites.length > 0) {        
-        sites.forEach(function(site) {
+        sites.forEach(function(site, index, collection) {
           result.site = url;
-          result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
+          result[index] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
         });
         res.json(result);
       } else {
@@ -32,12 +31,8 @@ var search = function(url, res) {
           // TODO: Refactor
           var date = new Date();
           date = date.toLocaleDateString();
-          var obj = {};
-          obj[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
-
-          helpers.createEntry(url, response.blob);
-
-          res.json(obj);
+          result[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
+          res.json(result);
         });
       }
     });

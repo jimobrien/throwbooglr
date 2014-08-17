@@ -2,6 +2,7 @@ var http = require('http-request');
 var Site = require('../web/db/db');
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
+var helpers = require('../web/helpers/helpers.js');
 
 
 module.exports = function(pageUrl, callback) {
@@ -12,8 +13,10 @@ module.exports = function(pageUrl, callback) {
       return;
     } else {
       var hex = parseInt(Math.random() * 16777216, 16).toString();
+
       blobService.createBlockBlobFromText('files', hex, res.buffer.toString(), function(error, result, response){
         if(!error){
+          helpers.createEntry(pageUrl, hex);
           blobService.setBlobProperties('files', hex, {'contentType': 'text/html'}, callback);
         }
       });

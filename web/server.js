@@ -17,8 +17,8 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-app.get('/', routes.index); // serves static index
-app.get('/sites', routes.handler); // all search queries are handled as get
+app.get('/', routes.index); // index.html
+app.get('/sites', routes.handler); // search queries
 app.options('*', function() {
   res.writeHead(200);
 });
@@ -26,4 +26,4 @@ app.options('*', function() {
 app.listen(port, ip);
 console.log("Listening on http://" + ip + ":" + port);
 
-cron();
+// cron();
