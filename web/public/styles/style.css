@@ -29,10 +29,12 @@ input:focus {
   outline: 0;
 }
 a {
-	color: #CCDAE6;
+	color: #2a6496;
+	font-weight: bold;
 }
 a:hover {
-	/*color: #fcfcfc*/
+	color: #fcfcfc;
+	font-weight: bold;
 	text-decoration: none;
 }
 
@@ -81,6 +83,7 @@ a:hover {
 
 .sites-container h5 {
 	color: #fdfdfd;
+	font-size: 1.1em;
 	opacity: .75;
 	font-weight: bold;
 	letter-spacing: .2em;
@@ -147,6 +150,7 @@ a:hover + .preview-box,
 /* archive items */
 
 .sites li {
+	margin: 20px 0;
 	transition: all .05s ease;
 	-webkit-transition: all .05s ease;
 }
