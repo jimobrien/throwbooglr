@@ -1,3 +1,5 @@
+var Site = require('../db/db');
+
 module.exports = {
   createEntry: function(url, hex) {
     var date = new Date();
