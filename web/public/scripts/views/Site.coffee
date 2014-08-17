@@ -1,18 +1,18 @@
 class Throwboogler.Views.Site extends Backbone.View
-	tagName: 'li'
+  tagName: 'li'
 
-	className: 'new-item'
+  className: 'new-item'
 
-	template: _.template '<a href="<%= url %>" class="livepreview"> <%= date %> </a>'
+  template: _.template '<a href="<%= url %>" class="livepreview"> <%= date %> </a>'
 
-	initialize: ->
-		@render()
+  initialize: ->
+    @render()
 
-	render: ->
-		model = @model.toJSON()
-		model = 
-			date: new Date(Object.keys(model)[0]).toLocaleDateString()
-			url: model[Object.keys(model)[0]]
-		
-		@$el.html @template model
-		@
+  render: ->
+    model = @model.toJSON()
+    model = 
+      date: new Date(Object.keys(model)[0]).toLocaleDateString()
+      url: model[Object.keys(model)[0]]
+    
+    @$el.html @template model
+    @

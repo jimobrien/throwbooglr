@@ -1,18 +1,18 @@
 class Throwboogler.Views.App extends Backbone.View
-	className: 'container main'
+  className: 'container main'
 
-	template: _.template '<div class="row search">
-													<div class="header">
-														<span class="title">throwbOOglr</span>
-													</div>
-												</div>
-											 '
+  template: _.template '<div class="row search">
+                          <div class="header">
+                            <span class="title">throwbOOglr</span>
+                          </div>
+                        </div>
+                       '
 
-	initialize: ->
-		@render()
+  initialize: ->
+    @render()
 
 
-	render: ->
-		@$el.html @template
-		@$('.search').append new Throwboogler.Views.SearchPane(model: @model).$el
-		@$el.append new Throwboogler.Views.Sites(collection: @model.get 'sites').$el
+  render: ->
+    @$el.html @template
+    @$('.search').append new Throwboogler.Views.SearchPane(model: @model).$el
+    @$el.append new Throwboogler.Views.Sites(collection: @model.get 'sites').$el
