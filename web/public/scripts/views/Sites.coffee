@@ -1,9 +1,9 @@
 class Throwboogler.Views.Sites extends Backbone.View
-	className: 'row sites-container'
+	className: 'row sites-container hidden'
 
 	# template: '<div class="col-md-offset-1 col-md-10 sites"></div>'
 	template: '<div class="col-md-offset-2 col-md-8">
-							<h5 class="hidden"> ARCHIVES </h5>
+							<h5> ARCHIVES </h5>
 							<ul class="sites list-unstyled"></ul>
 						</div>'
 
@@ -22,5 +22,6 @@ class Throwboogler.Views.Sites extends Backbone.View
 				new Throwboogler.Views.Site( model: site ).$el
 			)
 		@$(".livepreview").livePreview offset: 0
-		@$('h5').removeClass('hidden')
+		@$('.sites-container').removeClass('hidden')
+		$('#loader').addClass('hidden')
 		@

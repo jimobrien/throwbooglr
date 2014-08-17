@@ -3,7 +3,7 @@ class Throwboogler.Views.Site extends Backbone.View
 
 	className: ''
 
-	template: _.template '<a href="<%= url %>" class="livepreview"> <%= date %> </a>'
+	template: _.template '<a href="<%= url %>" class="livepreview new-item"> <%= date %> </a>'
 
 	initialize: ->
 		@render()

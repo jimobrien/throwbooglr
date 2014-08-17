@@ -126,3 +126,80 @@ a:hover + .preview-box,
   height: 100px; 
 	left: -9999px;
 }*/
+
+
+/* animations */
+
+/* archive items */
+
+li.new-item {
+  opacity: 0;
+  -webkit-animation: new-item-animation .3s linear forwards;
+  -o-animation: new-item-animation .3s linear forwards;
+  animation: new-item-animation .3s linear forwards
+}
+
+@keyframes new-item-animation {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0)
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)
+  }
+}
+
+
+/* LOADER */
+
+#loader {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  margin: -10px -50px;
+}
+#loader div {
+	width: 10px;
+  height: 10px;
+	background: #E16625;
+  position: absolute; 
+
+}
+#d1 {
+ -webkit-animation: animate 2s linear infinite;
+ animation: animate 2s linear infinite;
+}
+#d2 {
+	-webkit-animation: animate 2s linear infinite -.4s; 
+	animation: animate 2s linear infinite -.4s; 
+}
+#d3 {
+	-webkit-animation: animate 2s linear infinite -.8s; 
+	animation: animate 2s linear infinite -.8s; 
+}
+#d4 {
+ -webkit-animation: animate 2s linear infinite -1.2s; 
+ animation: animate 2s linear infinite -1.2s; 
+}
+#d5 {
+ -webkit-animation: animate 2s linear infinite -1.6s; 
+ animation: animate 2s linear infinite -1.6s; 
+}
+@-webkit-keyframes animate {
+  0% { left: 100px; top:0}
+  80% { left: 0; top:0;}
+  85% { left: 0; top: -20px; width: 10px; height: 10px;}
+  90% { width: 40px; height: 10px; }
+  95% { left: 100px; top: -20px; width: 10px; height: 10px;}
+  100% { left: 100px; top:0; }
+}

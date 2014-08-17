@@ -1,7 +1,7 @@
 class Throwboogler.Collections.Sites extends Backbone.Collection
 	model: Throwboogler.Models.Site
 
-	url: 'http:/localhost:3000/sites'
+	url: 'http:/10.4.11.249:3000/sites' #10.4.11.249
 
 	initialize: ->
 
