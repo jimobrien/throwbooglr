@@ -3,14 +3,13 @@ var db = require('./db');
 var fetch = require('../../workers/htmlfetcher');
 var helpers = require('../helpers/helpers');
 
-// var cronOut = function() {
-//     return new cronJob('00 00 03 * * 6', cron, function() {
-//       console.log('database updated');
-//     }, true);
-// };
+var cronOut = function() {
+    return new cronJob('00 00 03 * * 6', cron, function() {
+      console.log('database updated');
+    }, true);
+};
 
-var cronOut = function() { //change me
-  console.log('running cron');
+var cron = function() { //change me
   var urls = {};
   db.find(function(err, sites) {
       var sl = sites.length;

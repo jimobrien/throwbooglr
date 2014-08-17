@@ -23,7 +23,7 @@ var search = function(url, res) {
       if(sites.length > 0) {        
         sites.forEach(function(site, index, collection) {
           result.site = url;
-          result[index] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
+          result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
         });
         res.json(result);
       } else {
