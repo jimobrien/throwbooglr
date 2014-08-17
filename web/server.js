@@ -1,10 +1,11 @@
+var express = require('express');
+var routes = require('./routes/routes');
+var app = express();
 var mongoose = require('mongoose');
-var express  = require('express');
-var routes   = require('./routes/routes');
-var app      = express();
+var cron = require('./db/cron');
 
 var port = process.env.PORT || 3000;
-var ip   = process.env.URL || '10.4.11.249'; //localhost
+var ip = process.env.URL || "localhost";
 
 app.use(express.static(__dirname + '/public'));
 
@@ -16,11 +17,12 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-app.get('/', routes.index); // serves static index
-app.get('/sites', routes.handler); // all search queries are handled as get
+app.get('/', routes.index); // index.html
+app.get('/sites', routes.handler); // search queries
 app.options('*', function() {
   res.writeHead(200);
 });
 
 app.listen(port, ip);
-console.log("Listening on http://" + ip + ":" + port);
+
+cron();

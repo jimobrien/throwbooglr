@@ -11,7 +11,6 @@ module.exports = {
   },
   handler: function(req, res) {
     var url = req.query.name;
-    console.log('Tickled with:', url);
     search(url, res);
   },      
 };
@@ -22,33 +21,20 @@ var search = function(url, res) {
     .where('site').equals(url)
     .exec(function(err, sites) {
       if(sites.length > 0) {        
-        sites.forEach(function(site) {
+        sites.forEach(function(site, index, collection) {
           result.site = url;
           result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
         });
         res.json(result);
       } else {
         fetch(url, function (err, response) {
-          // temporary. needs severe cleanup..
+          // TODO: Refactor
           var date = new Date();
           date = date.toLocaleDateString();
-          var obj = {};
-          obj[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
-
-          createEntry(url, response.blob);
-
-          res.json(obj);
+          result[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
+          res.json(result);
         });
       }
     });
 };
 
-var createEntry = function(url, hex) {
-  var date = new Date();
-  date = date.toLocaleDateString();
-  new Site({
-    site: url,
-    date: date,
-    filepath: hex
-  }).save();
-};
