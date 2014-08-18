@@ -4,7 +4,7 @@ class Throwboogler.Views.Sites extends Backbone.View
   template: '<div class="col-md-offset-3 col-md-6">
               <h5> ARCHIVES </h5>
               <ul class="sites list-unstyled"></ul>
-            </div>'
+             </div>'
 
 
   initialize: ->
