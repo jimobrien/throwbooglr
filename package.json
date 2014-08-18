@@ -3,11 +3,7 @@
   "version": "0.0.1",
   "description": "Web cataloger",
   "main": "web/server.js",
-  "scripts": {
-    "postinstall": "bower install"
-  },  
   "dependencies": {
-    "bower": "~0.6.8",
     "azure-storage": "^0.3.2",
     "cron": "^1.0.4",
     "express": "^4.8.3",
