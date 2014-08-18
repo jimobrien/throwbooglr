@@ -24,7 +24,7 @@ var cron = function() { //change me
           var date = new Date();
           date = date.toLocaleDateString();
           var obj = {};
-          obj[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
+          obj[date] = 'https://throwbackdev.blob.core.windows.net/files/' + response.blob;
         });
       }
     });

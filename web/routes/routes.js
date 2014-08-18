@@ -23,7 +23,7 @@ var search = function(url, res) {
       if(sites.length > 0) {        
         sites.forEach(function(site, index, collection) {
           result.site = url;
-          result[site.date] = 'https://throwback.blob.core.windows.net/files/' + site.filepath;
+          result[site.date] = 'https://throwbackdev.blob.core.windows.net/files/' + site.filepath;
         });
         res.json(result);
       } else {
@@ -31,7 +31,7 @@ var search = function(url, res) {
           // TODO: Refactor
           var date = new Date();
           date = date.toLocaleDateString();
-          result[date] = 'https://throwback.blob.core.windows.net/files/' + response.blob;
+          result[date] = 'https://throwbackdev.blob.core.windows.net/files/' + response.blob;
           res.json(result);
         });
       }
