@@ -1,1 +1,1 @@
-web: AZURE_STORAGE_ACCOUNT=throwbackdev AZURE_STORAGE_ACCESS_KEY=sJKAvJVORP0Kzq/EWUQ/J9HOF/3EaO49HkMA3SzZE59GHDyb6x3Ne4YiVvZc+vFODEBTE9sxP8JOVkauNE4vaQ== node web/server.js
+web: node web/server.js
