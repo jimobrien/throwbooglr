@@ -7,7 +7,7 @@
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "bower": "0.6.x",
+    "bower": "~0.6.8",
     "azure-storage": "^0.3.2",
     "cron": "^1.0.4",
     "express": "^4.8.3",
@@ -16,9 +16,6 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jangahroo/2014-07-web-historian"
