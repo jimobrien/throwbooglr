@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Web cataloger",
   "main": "web/server.js",
+  "scripts": {
+    "postinstall": "bower cache clean && bower install"
+  },
   "dependencies": {
     "azure-storage": "^0.3.2",
     "cron": "^1.0.4",
