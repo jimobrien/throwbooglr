@@ -5,7 +5,7 @@
   "main": "web/server.js",
   "scripts": {
     "postinstall": "bower install"
-  },
+  },  
   "dependencies": {
     "bower": "~0.6.8",
     "azure-storage": "^0.3.2",
