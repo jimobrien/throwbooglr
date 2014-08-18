@@ -4,8 +4,7 @@ var app = express();
 var mongoose = require('mongoose');
 var cron = require('./db/cron');
 
-var port = process.env.PORT || 3000;
-var ip = process.env.URL || "localhost";
+var port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -23,6 +22,6 @@ app.options('*', function() {
   res.writeHead(200);
 });
 
-app.listen(port, ip);
+app.listen(port);
 
 cron();
